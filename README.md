@@ -36,4 +36,6 @@ pila de pedidos deshechos
 <img width="932" height="412" alt="image" src="https://github.com/user-attachments/assets/963a617d-6100-4713-8e32-c98d062dddd7" />
 
 a continuación se facilita el link del video donde se explica la funcionalidad del código utilizado
+https://drive.google.com/file/d/1TmAjNV5wUe7LSL02xmvvLuZbqLDs9Eyu/view?usp=sharing
+
 
