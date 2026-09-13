@@ -11,7 +11,6 @@ public class PizzaTrackMain {
 
         do {
             System.out.println("\n--- Bienvenido a la pizzería Pizza-Track!! ---");
-            System.out.println(" PILA PRINCIPAL (pedidos pendientes)");
             System.out.println("  1. Registrar una Pizza (Escribir)");
             System.out.println("  2. Deshacer un pedido (Undo)");
             System.out.println("  3. Rehacer un pedido (Redo)");
