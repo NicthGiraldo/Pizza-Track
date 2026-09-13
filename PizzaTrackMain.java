@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class PizzaTrackMain {
     public static void main(String[] args) {
-        PilaPizza bandeja = new PilaPizza();
+        GestionPedidos gestion = new GestionPedidos();
 
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
@@ -11,13 +11,15 @@ public class PizzaTrackMain {
 
         do {
             System.out.println("\n--- Bienvenido a la pizzería Pizza-Track!! ---");
-            System.out.println(" PILA (bandeja de solicitudes)");
-            System.out.println("   1. Ingresar una pizza     (push)");
-            System.out.println("   2. Sacar una pizza        (pop)");
-            System.out.println("   3. Ver pizza siguiente    (peek)");
-            System.out.println("   4. hay pizzas en espera?  (isEmpty)");
-            System.out.println("   5. Mostrar las pizzas en espera.");
-            System.out.println(" 0. Salir");
+            System.out.println(" PILA PRINCIPAL (pedidos pendientes)");
+            System.out.println("  1. Registrar una Pizza (Escribir)");
+            System.out.println("  2. Deshacer un pedido (Undo)");
+            System.out.println("  3. Rehacer un pedido (Redo)");
+            System.out.println("  4. Mostrar el Pedido Actual");
+            System.out.println("  5. Verificar si hay pedidos pendientes");
+            System.out.println("  6. Mostrar los pedidos pendientes");
+            System.out.println("  7. Mostrar los pedidos deshechos");
+            System.out.println("  0. Salir");
             System.out.print("Opción: ");
 
             try {
@@ -27,37 +29,49 @@ public class PizzaTrackMain {
 
                 switch (opc) {
                     case 1:
-                        bandeja.push(leer(sc));
-                        System.out.println("Ingresó una pizza: quedó ARRIBA de las demás.");
+                        gestion.ingresarPedido(leer(sc));
+                        System.out.println("Ingresó una pizza a la pila principal.");
                         break;
 
                     case 2: {
-                        Pizza salio = bandeja.pop();
+                        Pizza salio = gestion.deshacerPedido();
                         if (salio != null)
-                            System.out.println("Salió de la bandeja: " + salio);
+                            System.out.println("Pedido deshecho y enviado a la pila secundaria: " + salio);
                         else
-                            System.out.println("La bandeja de pizzas esta vacía.");
+                            System.out.println("No hay pedidos pendientes para deshacer.");
                         break;
                     }
 
                     case 3: {
-                        Pizza arriba = bandeja.peek();
-                        if (arriba != null)
-                            System.out.println("La primera pizza es: " + arriba);
+                        Pizza rehecha = gestion.rehacerPedido();
+                        if (rehecha != null)
+                            System.out.println("Pedido rehecho y devuelto a la pila principal: " + rehecha);
                         else
-                            System.out.println("La bandeja de pizzas esta vacía.");
+                            System.out.println("No hay pedidos deshechos para recuperar.");
                         break;
                     }
 
                     case 4:
-                        if (bandeja.isEmpty())
-                            System.out.println("Sí, la bandeja de pizzas está vacía.");
+                        Pizza actual = gestion.verSiguientePedido();
+                        if (actual != null)
+                            System.out.println("El pedido actual listo para producción es: " + actual);
                         else
-                            System.out.println("No, todavía hay pizzas en la bandeja.");
+                            System.out.println("No hay pedidos pendientes.");
                         break;
 
                     case 5:
-                        bandeja.mostrar();
+                        if (gestion.noHayPedidosPendientes())
+                            System.out.println("No, la pila de pedidos esta vacía.");
+                        else
+                            System.out.println("Si, aún hay pedidos pendientes.");
+                        break;
+
+                    case 6:
+                        gestion.mostrarPedidosPendientes();
+                        break;
+
+                    case 7:
+                        gestion.mostrarPedidosDeshechos();
                         break;
 
                     case 0:
@@ -82,13 +96,12 @@ public class PizzaTrackMain {
     public static Pizza leer(Scanner sc) {
         System.out.print("Nombre de la pizza (ej. Pepperoni): ");
         String nombre = sc.nextLine();
-        sc.nextLine();
         System.out.println("Ahora ingresa los ingredientes de la pizza (solo 3):");
         String[] ejemplos = { "Cebolla", "Pimientos", "Tomate" };
         String[] ingredientes = new String[3];
 
-        for (int i = 1; i <= 3; i++) {
-            System.out.print("  ingrediente " + i + " (ej. " + ejemplos[i] + "): ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("  ingrediente " + (i + 1) + " (ej. " + ejemplos[i] + "): ");
             ingredientes[i] = sc.nextLine();
         }
 
