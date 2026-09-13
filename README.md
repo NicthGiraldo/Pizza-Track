@@ -24,7 +24,16 @@ ahora vamos a rehacer el pedido que esta en cabeza que es pepperoni
 <img width="1357" height="305" alt="image" src="https://github.com/user-attachments/assets/174373ad-a836-4ee1-84e7-8486b078b4b4" />
 <img width="877" height="387" alt="image" src="https://github.com/user-attachments/assets/8eebf774-c30c-4ce9-b763-ee7a8ee4ba7d" />
 
-como vemos ahora, en la pila de deshechos esta solamente la pizza hawaiana
+como vemos ahora, en la pila de deshechos solamente quedaba la opción de hawaiana, la cual rehacemos para que la pila principal 
+este con los tres pedidos
 <img width="1286" height="307" alt="image" src="https://github.com/user-attachments/assets/933f77e1-f957-4d00-9f1c-56c0f450f673" />
 
+si escogemos la opción para revisar los pedidos deshechos nos aparece que la bandeja esta vacía
+<img width="567" height="291" alt="image" src="https://github.com/user-attachments/assets/5d19ef45-e880-4b95-85ab-a82eaf1f8c80" />
+
+y al escoger la opción para verificar los pedidos pendientes se pueden ver las tres pizzas creadas al principio, después de estar en la
+pila de pedidos deshechos 
+<img width="932" height="412" alt="image" src="https://github.com/user-attachments/assets/963a617d-6100-4713-8e32-c98d062dddd7" />
+
+a continuación se facilita el link del video donde se explica la funcionalidad del código utilizado
 
